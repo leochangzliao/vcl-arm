@@ -48,7 +48,7 @@ public:
         return *this;
     }
     Vec8us & load_a(void const * p) {
-        uint16_t *ap = (uint16_t*)__builtin_assume_aligned(p, 8);
+        uint16_t *ap = (uint16_t*)__builtin_assume_aligned(p, 16);
         xmm = vld1q_u16(ap);
         return *this;
     }

@@ -316,7 +316,7 @@ void test_load() {
 }
 void test_load_a() {
     // Test case 1: Load aligned basic values
-    alignas(8) int16_t data1[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    alignas(16) int16_t data1[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     Vec8s v1;
     v1.load_a(data1);
     for(int i = 0; i < 8; i++) {
@@ -324,7 +324,7 @@ void test_load_a() {
     }
 
     // Test case 2: Load aligned zeros
-    alignas(8) int16_t data2[8] = {0};
+    alignas(16) int16_t data2[8] = {0};
     Vec8s v2;
     v2.load_a(data2);
     for(int i = 0; i < 8; i++) {
@@ -332,7 +332,7 @@ void test_load_a() {
     }
 
     // Test case 3: Load aligned negative values
-    alignas(8) int16_t data3[8] = {-1, -2, -3, -4, -5, -6, -7, -8};
+    alignas(16) int16_t data3[8] = {-1, -2, -3, -4, -5, -6, -7, -8};
     Vec8s v3;
     v3.load_a(data3);
     for(int i = 0; i < 8; i++) {
@@ -340,7 +340,7 @@ void test_load_a() {
     }
 
     // Test case 4: Load aligned min/max values
-    alignas(8) int16_t data4[8] = {INT16_MIN, -1, 0, 1, INT16_MAX, INT16_MAX-1, INT16_MIN+1, 0};
+    alignas(16) int16_t data4[8] = {INT16_MIN, -1, 0, 1, INT16_MAX, INT16_MAX-1, INT16_MIN+1, 0};
     Vec8s v4;
     v4.load_a(data4);
     for(int i = 0; i < 8; i++) {
@@ -348,7 +348,7 @@ void test_load_a() {
     }
 
     // Test case 5: Load aligned values then modify array
-    alignas(8) int16_t data5[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    alignas(16) int16_t data5[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     Vec8s v5;
     v5.load_a(data5);
     data5[0] = 100; // Modify original array
@@ -402,7 +402,7 @@ void test_store() {
 }
 void test_store_a() {
     // Test case 1: Store aligned basic values
-    alignas(8) int16_t data1[8];
+    alignas(16) int16_t data1[8];
     Vec8s v1(1, 2, 3, 4, 5, 6, 7, 8);
     v1.store_a(data1);
     for(int i = 0; i < 8; i++) {
@@ -410,7 +410,7 @@ void test_store_a() {
     }
 
     // Test case 2: Store aligned zeros
-    alignas(8) int16_t data2[8];
+    alignas(16) int16_t data2[8];
     Vec8s v2(0);
     v2.store_a(data2);
     for(int i = 0; i < 8; i++) {
@@ -418,7 +418,7 @@ void test_store_a() {
     }
 
     // Test case 3: Store aligned negative values
-    alignas(8) int16_t data3[8];
+    alignas(16) int16_t data3[8];
     Vec8s v3(-1, -2, -3, -4, -5, -6, -7, -8);
     v3.store_a(data3);
     for(int i = 0; i < 8; i++) {
@@ -426,7 +426,7 @@ void test_store_a() {
     }
 
     // Test case 4: Store aligned min/max values
-    alignas(8) int16_t data4[8];
+    alignas(16) int16_t data4[8];
     Vec8s v4(INT16_MIN, -1, 0, 1, INT16_MAX, INT16_MAX-1, INT16_MIN+1, 0);
     v4.store_a(data4);
     int16_t expected4[] = {INT16_MIN, -1, 0, 1, INT16_MAX, INT16_MAX-1, INT16_MIN+1, 0};
@@ -435,7 +435,7 @@ void test_store_a() {
     }
 
     // Test case 5: Store aligned multiple times to same array
-    alignas(8) int16_t data5[8];
+    alignas(16) int16_t data5[8];
     Vec8s v5(1, 2, 3, 4, 5, 6, 7, 8);
     v5.store_a(data5);
     Vec8s v6(-1, -2, -3, -4, -5, -6, -7, -8);

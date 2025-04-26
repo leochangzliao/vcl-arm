@@ -304,7 +304,7 @@ void test_load() {
 
 void test_load_a() {
     // Test case 1: Load aligned zeros
-    alignas(8) uint16_t data1[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    alignas(16) uint16_t data1[8] = {0, 0, 0, 0, 0, 0, 0, 0};
     Vec8us v1;
     v1.load_a(data1);
     for(int i = 0; i < 8; i++) {
@@ -312,7 +312,7 @@ void test_load_a() {
     }
 
     // Test case 2: Load aligned sequential values
-    alignas(8) uint16_t data2[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    alignas(16) uint16_t data2[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     Vec8us v2;
     v2.load_a(data2);
     for(int i = 0; i < 8; i++) {
@@ -320,8 +320,8 @@ void test_load_a() {
     }
 
     // Test case 3: Load aligned maximum values
-    alignas(8) uint16_t data3[8] = {0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-                                   0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF};
+    alignas(16) uint16_t data3[8] = {0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+                                    0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF};
     Vec8us v3;
     v3.load_a(data3);
     for(int i = 0; i < 8; i++) {
@@ -329,8 +329,8 @@ void test_load_a() {
     }
 
     // Test case 4: Load aligned mixed values
-    alignas(8) uint16_t data4[8] = {0x1234, 0xABCD, 0, 0xFFFF,
-                                   0x8000, 0x4000, 0x2000, 0x1000};
+    alignas(16) uint16_t data4[8] = {0x1234, 0xABCD, 0, 0xFFFF,
+                                    0x8000, 0x4000, 0x2000, 0x1000};
     Vec8us v4;
     v4.load_a(data4);
     assert(v4[0] == 0x1234);

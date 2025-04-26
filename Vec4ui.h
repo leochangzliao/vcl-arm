@@ -47,7 +47,7 @@ public:
         return *this;
     }
     Vec4ui& load_a(void const * p) {
-        uint32_t *ap = (uint32_t*)__builtin_assume_aligned(p, 4);
+        uint32_t *ap = (uint32_t*)__builtin_assume_aligned(p, 16);
         xmm = vld1q_u32(ap);
         return *this;
     }

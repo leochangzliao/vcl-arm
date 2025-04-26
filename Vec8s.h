@@ -51,7 +51,7 @@ public:
 // Member function to load from array (aligned)
     Vec8s & load_a(void const * p) {
         //https://stackoverflow.com/questions/45714535/performance-of-unaligned-simd-load-store-on-aarch64
-        int16_t *ap = (int16_t*)__builtin_assume_aligned(p, 8);
+        int16_t *ap = (int16_t*)__builtin_assume_aligned(p, 16);
         xmm = vld1q_s16(ap);
         return *this;
     }
