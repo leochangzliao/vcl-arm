@@ -102,11 +102,11 @@ public:
     // cut off vector to n elements. The last 8-n elements are set to zero
     Vec8s& cutoff(int n) {
         if (uint32_t(n) >= 8) return *this;
-        // Define a mask array of 16 uint16_t elements where the first 8 are set to 0xFFFF (all bits 1)
-        // and the remaining 8 are set to 0. This mask will be used to clear elements beyond position n.
-        const uint16_t mask[16] = { 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
-                                   0, 0, 0, 0, 0, 0, 0, 0 };
-        *this &= Vec8s().load(mask + 8 - n);
+        //   This line defines a constant array mask of 32 `char` elements. The first 16 elements are set to `-1` (which corresponds to `0xFF` in hexadecimal, representing all bits set to 1), and the remaining 16 elements are set to `0` (representing all bits set to 0). This mask will be used to selectively clear elements in the vector.
+        const uint16_t mask[32] = { 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+                                    0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+                                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        *this &= Vec8s().load(mask + 16 - n);
         return *this;
     }
 
