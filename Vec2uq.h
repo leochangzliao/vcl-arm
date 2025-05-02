@@ -118,7 +118,7 @@ public:
         return 4;
     }
     static constexpr int elementtype() {
-        return 8;
+        return 10;
     }
 };
 
